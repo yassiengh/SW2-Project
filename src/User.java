@@ -6,6 +6,7 @@ public abstract class User {
     int userID;
     int rating;
 
+    public User(){}
     public User(String userName,String email,String password,Long phoneNumber,int userID,int rating){
         this.userName = userName;
         this.email = email;
