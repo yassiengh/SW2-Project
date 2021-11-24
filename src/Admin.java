@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.xml.crypto.Data;
 import java.awt.*;
 import java.sql.*;
 import java.util.Scanner;
@@ -56,7 +55,23 @@ public class Admin extends User implements  AdminInterface{
 
     @Override
     public void ViewPendingDriverRegistration() {
-
+        Connection conn = DataBaseConnect.ConnectDB();
+        String query = "SELECT user.userID, userName, phoneNumber, license, email,favouriteArea from user, registrationform where user.userID = registrationform.userID";
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs =  st.executeQuery(query);
+            while (rs.next()) {
+                System.out.println(rs.getInt("userID"));
+                System.out.println(rs.getString("userName"));
+                System.out.println(rs.getInt("phoneNumber"));
+                System.out.println(rs.getString("email"));
+                System.out.println(rs.getString("license"));
+                System.out.println(rs.getString("favouriteArea"));
+                System.out.println();
+            }
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     @Override

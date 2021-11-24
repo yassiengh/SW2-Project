@@ -9,7 +9,7 @@ public class SuggestionHandler implements SuggestionHandlerInterface{
     public void ViewRidesInFavArea(String FavouriteArea) {
         Connection conn = DataBaseConnect.ConnectDB();
         String query = "SELECT rideID, user.userID, src, des, userName from rides, user " +
-                "where rides.userID = user.userID AND src = \"" + FavouriteArea + "\"";
+                "where rides.userID = user.userID AND src = '" + FavouriteArea + "'";
         try {
             Statement st = conn.createStatement();
             ResultSet rs =  st.executeQuery(query);
@@ -28,14 +28,14 @@ public class SuggestionHandler implements SuggestionHandlerInterface{
 
     @Override
     public void offerPrice(int rideID, int price) {
-        Connection conn = DataBaseConnect.ConnectDB();
-        String query = "UPDATE rides set offeredPrice = " + price + " where rideID = " + rideID;
-        try {
-            Statement st = conn.createStatement();
-            st.execute(query);
-            System.out.println("price offered\n");
-        } catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e);
-        }
+//        Connection conn = DataBaseConnect.ConnectDB();
+//        String query = "UPDATE rides set offeredPrice = " + price + " where rideID = " + rideID;
+//        try {
+//            Statement st = conn.createStatement();
+//            st.execute(query);
+//            System.out.println("price offered\n");
+//        } catch(SQLException e){
+//            JOptionPane.showMessageDialog(null, e);
+//        }
     }
 }
