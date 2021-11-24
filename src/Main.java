@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class Main {
 
-    public static void main(String arg[]){
+    public static void main(String arg[]) {
         DataBaseConnect dataBaseConnect = new DataBaseConnect();
         Connection conn = DataBaseConnect.ConnectDB();
 
@@ -21,12 +21,11 @@ public class Main {
         String type = "admin";
 
 
-
-        try{
+        /*try{
             String query = "INSERT INTO user"+ " VALUES (?,?,?,?,?,?,?)";
           //  String query = "DELETE from user";
             PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setInt(1,1);
+            preparedStatement.setInt(1,3);
             preparedStatement.setString(2,username);
             preparedStatement.setString(3,email);
             preparedStatement.setString(4,password);
@@ -38,6 +37,13 @@ public class Main {
 
         }catch(SQLException | HeadlessException e){
             JOptionPane.showMessageDialog(null, e);
-        }
+        }*/
+
+//        Admin a = new Admin();
+//        a.ViewPendingDriverRegistration();
+
+        SuggestionHandler sh = new SuggestionHandler();
+        sh.ViewRidesInFavArea("obour");
+        sh.offerPrice(1, 40);
     }
 }
