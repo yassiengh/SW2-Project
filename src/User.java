@@ -1,3 +1,6 @@
+import java.sql.*;
+import java.util.logging.Logger;
+
 public abstract class User {
     String userName;
     String email;
@@ -19,6 +22,29 @@ public abstract class User {
     public abstract void register();
 
     public void login(String email,String password){
-        // code goes here
+        ResultSet rs;
+        PreparedStatement ps2;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con= DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/uber","root","");
+
+            String query2="SELECT * FROM `user` WHERE `PW`=? and `Email`=?";
+            ps2 = con.prepareStatement(query2);
+            ps2.getResultSet();
+            ps2.setString(1, password);
+            ps2.setString(2, email);
+
+            rs =ps2.executeQuery();
+
+            if(rs.next()){
+                System.out.println("login succesffully");
+            }else{
+                System.out.println("22221ly");
+            }} catch (ClassNotFoundException ex) {
+            Logger.getLogger(user.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(user.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
