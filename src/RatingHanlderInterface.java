@@ -1,3 +1,3 @@
 public interface RatingHanlderInterface {
-    public void rate(int rating, int RatedID);
+    void rate(int raterID, int RatedID);
 }
