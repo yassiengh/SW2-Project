@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SuggestionHandler implements SuggestionHandlerInterface{
+    static int offeredPrice;
+
     @Override
     public void ViewRidesInFavArea(String FavouriteArea) {
         Connection conn = DataBaseConnect.ConnectDB();
@@ -27,15 +29,7 @@ public class SuggestionHandler implements SuggestionHandlerInterface{
     }
 
     @Override
-    public void offerPrice(int rideID, int price) {
-//        Connection conn = DataBaseConnect.ConnectDB();
-//        String query = "UPDATE rides set offeredPrice = " + price + " where rideID = " + rideID;
-//        try {
-//            Statement st = conn.createStatement();
-//            st.execute(query);
-//            System.out.println("price offered\n");
-//        } catch(SQLException e){
-//            JOptionPane.showMessageDialog(null, e);
-//        }
+    public void offerPrice(int price) {
+        offeredPrice = price;
     }
 }

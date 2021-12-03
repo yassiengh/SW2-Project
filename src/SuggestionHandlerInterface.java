@@ -1,4 +1,4 @@
 public interface SuggestionHandlerInterface {
     public void ViewRidesInFavArea(String FavouriteArea);
-    public void offerPrice(int rideID, int price);
+    public void offerPrice(int price);
 }
